@@ -1,167 +1,104 @@
-// script.js
+// =====================================================
+// CANVA DESIGN PORTFOLIO — script.js
+// =====================================================
 
-// --- Custom Cursor ---
-const cursorDot = document.querySelector("[data-cursor-dot]");
-const cursorOutline = document.querySelector("[data-cursor-outline]");
-const interactiveElements = document.querySelectorAll('a, button, .tilt-card, .profile-wrapper, .hamburger, .social-icon, .tech-icons i, .skill-tag');
+// ── Navbar: scroll hide / show + scrolled style ──
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
 
-window.addEventListener("mousemove", function (e) {
-    const posX = e.clientX;
-    const posY = e.clientY;
-
-    if (cursorDot && cursorOutline) {
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 300, fill: "forwards" });
-    }
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (!navbar) return;
+    navbar.classList.toggle('scrolled', y > 40);
 });
 
-interactiveElements.forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-        if (cursorOutline) cursorOutline.classList.add("cursor-hover");
-        if (cursorDot) cursorDot.style.opacity = "0";
-    });
-    el.addEventListener("mouseleave", () => {
-        if (cursorOutline) cursorOutline.classList.remove("cursor-hover");
-        if (cursorDot) cursorDot.style.opacity = "1";
-    });
-});
-
-document.addEventListener("mouseleave", () => {
-    if (cursorDot) cursorDot.style.opacity = "0";
-    if (cursorOutline) cursorOutline.style.opacity = "0";
-});
-document.addEventListener("mouseenter", () => {
-    if (cursorDot) cursorDot.style.opacity = "1";
-    if (cursorOutline) cursorOutline.style.opacity = "1";
-});
-
-
-// --- Typeswriter Effect ---
-const typingText = document.querySelector('.typing-text');
-const words = ["performant React apps.", "scalable UI systems.", "seamless experiences.", "pixel-perfect designs."];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typeSpeed = 80;
-
-function type() {
-    if (!typingText) return;
-    const currentWord = words[wordIndex];
-
-    if (isDeleting) {
-        typingText.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-        typeSpeed = 30;
-    } else {
-        typingText.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-        typeSpeed = 80;
-    }
-
-    if (!isDeleting && charIndex === currentWord.length) {
-        isDeleting = true;
-        typeSpeed = 2000; // Pause at end of word
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        typeSpeed = 500; // Pause before new word
-    }
-
-    setTimeout(type, typeSpeed);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(type, 1500); // Initial delay
-});
-
-
-// --- Mobile Navigation ---
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const navLinksItems = document.querySelectorAll('.nav-links li a');
+// ── Mobile hamburger ──
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('navLinks');
+const navPills  = document.querySelectorAll('.nav-pill');
 
 if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
+        const open = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('active', open);
+        hamburger.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
     });
 
-    navLinksItems.forEach(item => {
-        item.addEventListener('click', () => {
+    navPills.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
             hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
         });
     });
 }
 
+// ── Scroll-reveal (fade-up) ──
+const fadeEls = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
 
-// --- Scroll Visibility Animations (Intersection Observer) ---
-const fadeUpElements = document.querySelectorAll('.fade-up');
-
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-};
-
-const appearanceObserver = new IntersectionObserver(function (entries, observer) {
+const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-fadeUpElements.forEach(el => appearanceObserver.observe(el));
+fadeEls.forEach(el => revealObserver.observe(el));
 
+// ── Active nav link on scroll ──
+const sections = document.querySelectorAll('section[id]');
 
-// --- Navbar Scroll Effect ---
-let lastScrollTop = 0;
-const navbar = document.querySelector('.navbar');
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navPills.forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.querySelector(`.nav-pill[href="#${entry.target.id}"]`);
+            // Exclude the 'Hire Me' button from getting the normal active style
+            if (activeLink && !activeLink.classList.contains('nav-pill-btn')) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}, { threshold: 0.4 });
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+sections.forEach(sec => sectionObserver.observe(sec));
 
-    if (!navbar) return;
+// ── Lightbox Logic ──
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
 
-    if (scrollTop > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+window.openLightbox = function(src) {
+    if(!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
 
-    if (scrollTop > lastScrollTop && scrollTop > 200) {
-        // Scroll Down - Hide Navbar
-        navbar.classList.add('scroll-down');
-    } else {
-        // Scroll Up - Show Navbar
-        navbar.classList.remove('scroll-down');
-    }
+if(lightboxClose && lightbox) {
+    lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+}
 
-    lastScrollTop = scrollTop;
-});
-
-window.dispatchEvent(new Event('scroll'));
-
-// --- Vanilla Tilt Initialization (Desktop Only) ---
+// ── Vanilla Tilt on project cards (desktop only) ──
 if (window.innerWidth > 768 && typeof VanillaTilt !== 'undefined') {
-    VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-        max: 8,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.15,
-        scale: 1.02
-    });
-
-    VanillaTilt.init(document.querySelector(".tilt-box"), {
-        max: 8,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2,
-        scale: 1.03
+    VanillaTilt.init(document.querySelectorAll('.project-card'), {
+        max: 3,
+        speed: 500,
+        glare: false,
+        scale: 1.01
     });
 }

@@ -4,323 +4,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dalia Shaheen | Front-End Developer</title>
+    <title>Dalia Shaheen — Frontend Developer</title>
+    <meta name="description" content="Dalia Shaheen is a Frontend Developer specializing in crafting clean, performant, and accessible web experiences with React, JavaScript, HTML & CSS.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Using Playfair Display for elegant headings, Poppins for clean body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Devicon for colored tech icons -->
+
+    <!-- Devicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Subtle Background Texture -->
+    <div class="bg-texture"></div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div>
-
-    <!-- Gorgeous Abstract Animated Background -->
-    <div class="background-container">
-        <div class="blob shape-1"></div>
-        <div class="blob shape-2"></div>
-        <div class="blob shape-3"></div>
-        <div class="glass-overlay"></div>
-    </div>
-
-    <!-- Header / Nav -->
-    <header class="navbar">
-        <div class="logo">
-            <span class="logo-text">Dalia<span class="dot">.</span></span>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Work</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="logo">
+                <span class="logo-name">DS</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <nav aria-label="Main navigation" class="nav-container">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-pill active" data-section="home">Home</a></li>
+                    <li><a href="#about" class="nav-pill" data-section="about">About Me</a></li>
+                    <li><a href="#projects" class="nav-pill" data-section="projects">Projects</a></li>
+                    <li><a href="#certifications" class="nav-pill" data-section="certifications">Certificates</a></li>
+                    <li><a href="#contact" class="nav-pill nav-pill-btn" data-section="contact">Hire Me</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- ===== HERO ===== -->
         <section id="home" class="hero">
-            <div class="hero-container">
-                <!-- Text Content -->
-                <div class="hero-content">
-                    <div class="badge fade-up" style="--delay: 1">
-                        <span class="badge-dot"></span> Available for new projects
-                    </div>
-                    <h1 class="headline fade-up" style="--delay: 2">
-                        Hi, I'm <span class="gradient-text">Dalia Shaheen</span>
-                    </h1>
-                    <h2 class="sub-headline fade-up" style="--delay: 3">
-                        I create <span class="typing-text"></span><span class="cursor">&nbsp;</span>
-                    </h2>
-                    <p class="description fade-up" style="--delay: 4">
-                        A creative Front-End Developer who focuses on interactive, accessible, and high-performance
-                        digital experiences. Let's turn your ideas into stunning reality.
+            <div class="hero-inner">
+                <!-- Left: Text -->
+                <div class="hero-text fade-right">
+                    <p class="hero-greeting">Hi, I am</p>
+                    <h1 class="hero-name">Dalia Shaheen</h1>
+                    <p class="hero-role">
+                        <strong>Frontend Developer</strong> | HTML, CSS, JavaScript, React
+                    </p>
+                    <p class="hero-desc">
+                        I create intuitive, clean, and responsive user interfaces. Passionate about translating design into functional web experiences that engage users.
                     </p>
 
-                    <div class="tech-stack fade-up" style="--delay: 5">
-                        
-                        <div class="tech-icons">
-                            <i class="devicon-html5-plain colored tooltip" data-tooltip="HTML5"></i>
-                            <i class="devicon-css3-plain colored tooltip" data-tooltip="CSS3"></i>
-                            <i class="devicon-javascript-plain colored tooltip" data-tooltip="JavaScript"></i>
-                            <i class="devicon-react-original colored tooltip" data-tooltip="React"></i>
-                            <i class="devicon-bootstrap-plain colored tooltip" data-tooltip="Bootstrap"></i>
-                            <i class="devicon-tailwindcss-plain colored tooltip" data-tooltip="Tailwind CSS"></i>
-                            <i class="devicon-git-plain colored tooltip" data-tooltip="Git"></i>
+                    <a href="Dalia_Shaheen_CV.pdf" download class="btn btn-brown" id="hero-cv-btn">
+                        Download CV
+                    </a>
+
+                    <!-- Social Icons below text (Canva style) -->
+                    <div class="hero-socials">
+                        <a href="https://github.com/dalia-shaheen" target="_blank" class="social-circle"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/daliashaheen" target="_blank" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:daliashaheen776@gmail.com" class="social-circle"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/201016622826" target="_blank" class="social-circle"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right: Photo -->
+                <div class="hero-photo-wrap fade-left delay-200">
+                    <div class="photo-bg-shape"></div>
+                    <img src="img/1738446202409.jpg" alt="Dalia Shaheen" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="about-modern">
+            <div class="about-modern-inner">
+                
+                <!-- Left side: Image and shapes -->
+                <div class="about-visual fade-right">
+                    <div class="about-arch">
+                        <img src="img/5819109932631002813.jpg" alt="Dalia Shaheen">
+                    </div>
+                    <!-- Badges -->
+                    <div class="about-badge badge-top-left">
+                        <div class="badge-icon"><i class="fas fa-code"></i></div>
+                        <div class="badge-text">
+                            <span class="badge-title">Projects Done</span>
+                            <span class="badge-value">15+</span>
+                        </div>
+                    </div>
+                    <div class="about-badge badge-bottom-right">
+                        <div class="badge-icon badge-dark"><i class="fas fa-certificate"></i></div>
+                        <div class="badge-text">
+                            <span class="badge-value-small">Frontend Developer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side: Content -->
+                <div class="about-content-right fade-left delay-200">
+                    <div class="section-header" style="margin-bottom: 25px;">
+                        <span class="yellow-dot"></span>
+                        <h2 class="section-title">About Me</h2>
+                    </div>
+                    
+                    <p class="about-desc">
+                        I'm a detail-oriented <strong>Frontend Developer</strong> based in Egypt. I love creating digital experiences that are not only visually appealing but also highly functional and accessible. My journey into coding started out of curiosity and quickly became a passion. I specialize in building responsive, interactive web applications using modern technologies.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">Years of Practice</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Core Tech Skills</span>
                         </div>
                     </div>
 
-                    <div class="hero-btns fade-up" style="--delay: 6">
-                        <a href="#projects" class="btn primary-btn">View My Work <i class="fas fa-sparkles"></i></a>
-                        <a href="#contact" class="btn secondary-btn">Let's Talk <i class="fas fa-paper-plane"></i></a>
-                    </div>
-                </div>
-
-                <!-- Profile Picture Box -->
-                <div class="hero-image fade-up tilt-box" style="--delay: 3">
-                    <div class="profile-wrapper">
-                        <!-- User's actual image from the folder -->
-                        <img src="img/1738446202409.jpg" alt="Dalia Shaheen" class="profile-img">
-
-                        <!-- Floating graphic elements -->
-                        <div class="floating-badge badge-1"><i class="devicon-react-original colored"></i></div>
-                        <div class="floating-badge badge-2"><i class="devicon-javascript-plain colored"></i></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="scroll-indicator fade-up" style="--delay: 8">
-                <a href="#about" class="scroll-down-btn">
-                    <i class="fas fa-chevron-down"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <h2 class="section-title fade-up">About Me <div class="line"></div>
-            </h2>
-            <div class="about-content glass-card fade-up" style="--delay: 1">
-                <div class="about-text">
-                    <h3 class="about-greeting">Driven by passion and code.</h3>
-                    <p>I am a detail-oriented Front-End Developer with a strong eye for UI/UX design. My goal is to
-                        build attractive, pixel-perfect user interfaces that engage users and provide seamless digital
-                        experiences.</p>
-                    <p>I thrive on turning complex problems into intuitive, beautiful, and responsive web applications
-                        using the latest modern technologies. Whether it's a sleek corporate site or a dynamic
-                        interactive platform, I code with scalability, accessibility, and performance in mind.</p>
-
-                    <div class="skills-highlight">
-                        <div class="skill-tag"><i class="fas fa-check-circle"></i> Responsive Design</div>
-                        <div class="skill-tag"><i class="fas fa-check-circle"></i> SPAs (React)</div>
-                        <div class="skill-tag"><i class="fas fa-check-circle"></i> UI/UX Implementation</div>
-                        <div class="skill-tag"><i class="fas fa-check-circle"></i> Clean Architecture</div>
-                        <div class="skill-tag"><i class="fas fa-check-circle"></i> Performance Optimization</div>
-                        <div class="skill-tag"><i class="fas fa-check-circle"></i> Creative Problem Solving</div>
+                    <div class="about-contact-links">
+                        <a href="mailto:daliashaheen776@gmail.com" class="about-link">
+                            <div class="link-icon"><i class="fas fa-envelope"></i></div>
+                            <span>Email Me</span>
+                        </a>
+                        <a href="https://github.com/dalia-shaheen" target="_blank" class="about-link">
+                            <div class="link-icon"><i class="fab fa-github"></i></div>
+                            <span>GitHub Profile</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- ===== SKILLS ===== -->
+        <section id="skills" class="skills-section">
+            <div class="section-header fade-up" style="justify-content: center; margin-bottom: 50px;">
+                <span class="yellow-dot"></span>
+                <h2 class="section-title">Tools and Skills</h2>
+            </div>
+            
+            <div class="skills-row">
+                <div class="skill-card zoom-in delay-100">
+                    <div class="skill-shape">
+                        <i class="devicon-html5-plain colored skill-icon"></i>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <span class="skill-name">HTML5</span>
+                </div>
+                <div class="skill-card zoom-in delay-200">
+                    <div class="skill-shape">
+                        <i class="devicon-css3-plain colored skill-icon"></i>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <span class="skill-name">CSS3</span>
+                </div>
+                <div class="skill-card zoom-in delay-300">
+                    <div class="skill-shape">
+                        <i class="devicon-javascript-plain colored skill-icon"></i>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <span class="skill-name">JavaScript</span>
+                </div>
+                <div class="skill-card zoom-in delay-400">
+                    <div class="skill-shape">
+                        <i class="devicon-react-original colored skill-icon"></i>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <span class="skill-name">React</span>
+                </div>
+                <div class="skill-card zoom-in delay-500">
+                    <div class="skill-shape">
+                        <i class="devicon-tailwindcss-plain colored skill-icon"></i>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <span class="skill-name">Tailwind</span>
+                </div>
+                <div class="skill-card zoom-in delay-100">
+                    <div class="skill-shape">
+                        <i class="devicon-git-plain colored skill-icon"></i>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <span class="skill-name">Git</span>
+                </div>
+                <div class="skill-card zoom-in delay-200">
+                    <div class="skill-shape">
+                        <i class="devicon-bootstrap-plain colored skill-icon"></i>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <span class="skill-name">Bootstrap</span>
+                </div>
+                <div class="skill-card zoom-in delay-300">
+                    <div class="skill-shape">
+                        <i class="devicon-github-original colored skill-icon"></i>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <span class="skill-name">GitHub</span>
+                </div>
+            </div>
+
+            <!-- Ticker/Marquee at bottom -->
+            <div class="skills-ticker-wrap fade-up">
+                <div class="skills-ticker">
+                    <span>Website Design</span> <span class="ticker-dot">✦</span>
+                    <span>Responsive Layouts</span> <span class="ticker-dot">✦</span>
+                    <span>SPA Development</span> <span class="ticker-dot">✦</span>
+                    <span>Web Animations</span> <span class="ticker-dot">✦</span>
+                    <span>Performance Optimization</span> <span class="ticker-dot">✦</span>
+                    <!-- Duplicate for infinite scroll effect -->
+                    <span>Website Design</span> <span class="ticker-dot">✦</span>
+                    <span>Responsive Layouts</span> <span class="ticker-dot">✦</span>
+                    <span>SPA Development</span> <span class="ticker-dot">✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS ===== -->
         <section id="projects" class="projects">
-            <h2 class="section-title fade-up">Featured Work <div class="line"></div>
-            </h2>
+            <div class="section-header fade-up">
+                <span class="yellow-dot"></span>
+                <h2 class="section-title">My Previous Projects</h2>
+            </div>
+
             <div class="projects-grid">
+                
+                <!-- Project 1: Newspaper -->
+                <article class="project-card fade-up">
+                    <div class="card-img-container">
+                        <img src="img/newspaper.JPG" alt="Childhood Newspaper">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Childhood Newspaper</h3>
+                        <p class="card-desc">Nostalgic editorial-style newspaper layout showcasing mastery of CSS Grid, typography, and multi-column designs.</p>
+                        <div class="card-tags">
+                            <span>HTML5</span><span>CSS3</span><span>Grid</span><span>JS</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://dalia-shaheen.github.io/Childhood_Newspaper_/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/Childhood_Newspaper_" target="_blank" class="btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </article>
 
-                <!-- Project 1 -->
-                <div class="project-card tilt-card glass-card fade-up">
-                    <div class="project-header">
-                        <div class="project-icon-box">
-                            <i class="fas fa-shopping-bag"></i>
+                <!-- Project 2: ShopNest -->
+                <article class="project-card fade-up" style="--d:1">
+                    <div class="card-img-container">
+                        <img src="img/shopnest.JPG" alt="ShopNest">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">ShopNest E-Commerce</h3>
+                        <p class="card-desc">Advanced SPA E-commerce solution with robust state management, real API integration, and highly responsive layouts.</p>
+                        <div class="card-tags">
+                            <span>React</span><span>Tailwind</span><span>API</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://dalia-shaheen.github.io/shop-smart-e_commerce/" target="_blank"
-                                rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                        <div class="card-actions">
+                            <a href="https://shopnest-e-commrce-ds.vercel.app/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/shopnest-e-commerce" target="_blank" class="btn-small btn-outline">GitHub</a>
                         </div>
                     </div>
-                    <div class="project-body">
-                        <h3 class="project-title"><a href="https://dalia-shaheen.github.io/shop-smart-e_commerce/"
-                                target="_blank">Shop Smart</a></h3>
-                        <p class="project-description">A vibrant E-commerce platform featuring a modern UI, real-time
-                            product filtering, and a seamless shopping cart experience built with vanilla JS and local
-                            storage.</p>
-                    </div>
-                    <div class="project-footer">
-                        <ul class="project-tech">
-                            <li><i class="devicon-html5-plain colored"></i> HTML5</li>
-                            <li><i class="devicon-css3-plain colored"></i> CSS3</li>
-                            <li><i class="devicon-javascript-plain colored"></i> JavaScript</li>
-                        </ul>
-                    </div>
-                </div>
+                </article>
 
-                <!-- Project 2 -->
-                <div class="project-card tilt-card glass-card fade-up" style="--delay: 1">
-                    <div class="project-header">
-                        <div class="project-icon-box">
-                            <i class="fas fa-store"></i>
+                <!-- Project 3: Fast Food -->
+                <article class="project-card fade-up" style="--d:2">
+                    <div class="card-img-container">
+                        <img src="img/fastfood.JPG" alt="Fast Food">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Fast Food Landing Page</h3>
+                        <p class="card-desc">Vibrant landing page with smooth scroll animations, sticky navigation, and visually engaging sections.</p>
+                        <div class="card-tags">
+                            <span>HTML/CSS</span><span>JS</span><span>Animation</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://shopnest-e-commrce-ds.vercel.app/" target="_blank"
-                                rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                        <div class="card-actions">
+                            <a href="https://dalia-shaheen.github.io/fast-food/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/fast-food" target="_blank" class="btn-small btn-outline">GitHub</a>
                         </div>
                     </div>
-                    <div class="project-body">
-                        <h3 class="project-title"><a href="https://shopnest-e-commrce-ds.vercel.app/"
-                                target="_blank">ShopNest E-Commerce</a></h3>
-                        <p class="project-description">Advanced SPA E-commerce solution with robust state management,
-                            modern component architecture, fetching real APIs, and highly responsive layouts.</p>
+                </article>
+                
+                <!-- Project 4: Shop Smart -->
+                <article class="project-card fade-up">
+                    <div class="card-img-container">
+                        <img src="img/shopsmart.JPG" alt="Shop Smart">
                     </div>
-                    <div class="project-footer">
-                        <ul class="project-tech">
-                            <li><i class="devicon-react-original colored"></i> React</li>
-                            <li><i class="devicon-tailwindcss-plain colored"></i> Tailwind</li>
-                            <li>API Integration</li>
-                        </ul>
+                    <div class="card-content">
+                        <h3 class="card-title">Shop Smart</h3>
+                        <p class="card-desc">Vanilla JS e-commerce platform with real-time product filtering, live shopping cart, and localStorage persistence.</p>
+                        <div class="card-tags">
+                            <span>Vanilla JS</span><span>DOM</span><span>Storage</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://dalia-shaheen.github.io/shop-smart-e_commerce/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/shop-smart-e_commerce" target="_blank" class="btn-small btn-outline">GitHub</a>
+                        </div>
                     </div>
-                </div>
+                </article>
+                
+                <!-- Project 5: Mealify -->
+                <article class="project-card fade-up" style="--d:1">
+                    <div class="card-img-container">
+                        <img src="img/mealfy.JPG" alt="Mealify">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Mealify Web</h3>
+                        <p class="card-desc">Polished restaurant showcase with interactive menu, masonry image gallery, and chef profiles. Advanced CSS layout.</p>
+                        <div class="card-tags">
+                            <span>HTML5</span><span>CSS3</span><span>Masonry</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://dalia-shaheen.github.io/mealify/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/mealify" target="_blank" class="btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Project 6: Bakery -->
+                <article class="project-card fade-up" style="--d:2">
+                    <div class="card-img-container">
+                        <img src="img/bakery.JPG" alt="The Bakery">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">The Bakery</h3>
+                        <p class="card-desc">Elegant, visually indulgent bakery landing page highlighting strong typographic choices and Flexbox layouts.</p>
+                        <div class="card-tags">
+                            <span>Flexbox</span><span>Responsive</span><span>Design</span>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://dalia-shaheen.github.io/Bakery/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/Bakery" target="_blank" class="btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </article>
 
-                <!-- Project 3 -->
-                <div class="project-card tilt-card glass-card fade-up" style="--delay: 2">
-                    <div class="project-header">
-                        <div class="project-icon-box">
-                            <i class="fas fa-cookie-bite"></i>
+                <!-- Project 7: Daniels -->
+                <article class="project-card fade-up">
+                    <div class="card-img-container">
+                        <img src="img/daniels.JPG" alt="Daniels">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Daniels Portfolio</h3>
+                        <p class="card-desc">A clean, personal portfolio template demonstrating solid understanding of HTML, CSS, and basic layout principles.</p>
+                        <div class="card-tags">
+                            <span>HTML</span><span>CSS</span><span>Bootstrap</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://dalia-shaheen.github.io/Bakery/" target="_blank"
-                                rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                        <div class="card-actions">
+                            <a href="https://dalia-shaheen.github.io/Daniels/" target="_blank" class="btn-small">Live Site</a>
+                            <a href="https://github.com/dalia-shaheen/Daniels" target="_blank" class="btn-small btn-outline">GitHub</a>
                         </div>
                     </div>
-                    <div class="project-body">
-                        <h3 class="project-title"><a href="https://dalia-shaheen.github.io/Bakery/" target="_blank">The
-                                Bakery</a></h3>
-                        <p class="project-description">A visually appealing and delicious-looking landing page
-                            showcasing elegant typography, CSS grid and flexbox mastery, alongside responsive imagery.
-                        </p>
-                    </div>
-                    <div class="project-footer">
-                        <ul class="project-tech">
-                            <li><i class="devicon-html5-plain colored"></i> HTML5</li>
-                            <li><i class="devicon-css3-plain colored"></i> CSS3</li>
-                            <li>UI Design</li>
-                        </ul>
-                    </div>
-                </div>
+                </article>
 
-                <!-- Project 4 -->
-                <div class="project-card tilt-card glass-card fade-up" style="--delay: 0">
-                    <div class="project-header">
-                        <div class="project-icon-box">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://dalia-shaheen.github.io/portfolio_developer/" target="_blank"
-                                rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title"><a href="https://dalia-shaheen.github.io/portfolio_developer/"
-                                target="_blank">Portfolio </a></h3>
-                        <p class="project-description">An earlier iteration highlighting strong foundational front-end
-                            design skills, creative pure CSS transitions, and valid semantic structures.</p>
-                    </div>
-                    <div class="project-footer">
-                        <ul class="project-tech">
-                            <li><i class="devicon-html5-plain colored"></i> HTML</li>
-                            <li><i class="devicon-css3-plain colored"></i> CSS Animations</li>
-                            <li><i class="devicon-javascript-plain colored"></i> JS</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card tilt-card glass-card fade-up" style="--delay: 1">
-                    <div class="project-header">
-                        <div class="project-icon-box">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://dalia-shaheen.github.io/mealify/" target="_blank"
-                                rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title"><a href="https://dalia-shaheen.github.io/mealify/"
-                                target="_blank">Mealify Web</a></h3>
-                        <p class="project-description">A stunning restaurant showcase detailing interactive menus, chef
-                            profiles, and beautiful masonry gallery layouts for an immersive dining preview.</p>
-                    </div>
-                    <div class="project-footer">
-                        <ul class="project-tech">
-                            <li><i class="devicon-html5-plain colored"></i> HTML5</li>
-                            <li><i class="devicon-css3-plain colored"></i> Advanced CSS</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="more-work-container fade-up" style="--delay: 3">
-                <a href="https://github.com/dalia-shaheen" target="_blank" class="btn secondary-btn">View My GitHub
-                    Profile <i class="fab fa-github"></i></a>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- ===== CERTIFICATIONS ===== -->
+        <section id="certifications" class="certifications">
+            <div class="section-header fade-up">
+                <span class="yellow-dot"></span>
+                <h2 class="section-title">Certificates</h2>
+            </div>
+            
+            <div class="certs-container fade-up">
+                <div class="cert-intro fade-right delay-200">
+                    <p>I believe in continuous learning and professional development. Here are some of the certificates I have earned across various programming fields during my journey.</p>
+                </div>
+                <div class="certs-visual fade-left delay-400">
+                    <div class="cert-stack">
+                        <img src="img/certific5.jpg" alt="Certificate 1" class="cert-stack-img cert-1" onclick="openLightbox(this.src)">
+                        <img src="img/certific4.jpg" alt="Certificate 2" class="cert-stack-img cert-2" onclick="openLightbox(this.src)">
+                        <img src="img/certific3.jpg" alt="Certificate 3" class="cert-stack-img cert-3" onclick="openLightbox(this.src)">
+                        <img src="img/certific2.jpg" alt="Certificate 4" class="cert-stack-img cert-4" onclick="openLightbox(this.src)">
+                        <img src="img/certific1.jpg" alt="Certificate 5" class="cert-stack-img cert-5" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Lightbox overlay -->
+        <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fas fa-times"></i></button>
+            <div class="lightbox-inner">
+                <img src="" alt="Certificate" class="lightbox-img" id="lightboxImg">
+            </div>
+        </div>
+
+        <!-- ===== CONTACT ===== -->
         <section id="contact" class="contact">
-            <div class="glass-card contact-card fade-up">
-                <h1 class="contact-title gradient-text">Let's Work Together</h1>
-                <p class="contact-desc">
-                    I'm actively looking for new Front-End Developer opportunities. Whether you have a visionary project
-                    or just want to say hi, my inbox is always open!
-                </p>
-                <div class="contact-btn-wrapper">
-                    <a href="mailto:daliashaheen776@gmail.com" class="btn primary-btn glow-btn">Say Hello <i
-                            class="fas fa-paper-plane" style="margin-left: 8px;"></i></a>
+            <div class="contact-box fade-up">
+                <div class="contact-left">
+                    <span class="yellow-dot"></span>
+                    <h2 class="contact-title">Contact Me</h2>
+                    <p class="contact-sub">Reach out for any job opportunities or questions!</p>
+                    
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> daliashaheen776@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/daliashaheen</li>
+                        <li><i class="fab fa-github"></i> github.com/dalia-shaheen</li>
+                    </ul>
+                </div>
+                <div class="contact-right">
+                    <h2>Let's work<br>together!</h2>
+                    <p>Open to internships and junior roles where I can contribute and grow.</p>
+                    <a href="mailto:daliashaheen776@gmail.com" class="btn btn-brown btn-large">Say Hello</a>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content fade-up">
-            <div class="logo">
-                <span class="logo-text" style="font-size: 24px;">Dalia<span class="dot">.</span></span>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-name">DS</span>
             </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/daliashaheen" target="_blank" rel="noopener noreferrer"
-                    class="social-icon tooltip" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.facebook.com/share/1BH3fjCVGx/" target="_blank" rel="noopener noreferrer"
-                    class="social-icon tooltip" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/201016622826" target="_blank" rel="noopener noreferrer"
-                    class="social-icon tooltip" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:daliashaheen776@gmail.com" target="_blank" rel="noopener noreferrer"
-                    class="social-icon tooltip" data-tooltip="Email"><i class="far fa-envelope"></i></a>
+            <div class="footer-socials">
+                <a href="https://github.com/dalia-shaheen" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/daliashaheen" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p class="footer-text">Designed & Developed with <i class="fas fa-heart"></i> by Dalia Shaheen</p>
+            <p class="footer-copy">&copy; 2025 Dalia Shaheen. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Vanilla Tilt JS for 3D interactions -->
+    <!-- Vanilla Tilt (kept for slight card interactivity if needed) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
